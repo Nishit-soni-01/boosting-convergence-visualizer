@@ -410,7 +410,7 @@ with col_c:
         <div class="metric-sub">auto-imputed</div>
     </div>""", unsafe_allow_html=True)
 with col_d:
-    cat_cols = df_raw.select_dtypes(include=['object', 'category']).shape[1]
+    cat_cols = sum(1 for col in df_raw.columns if not pd.api.types.is_numeric_dtype(df_raw[col]))
     st.markdown(f"""
     <div class="metric-card">
         <div class="metric-label">Categorical cols</div>
@@ -432,7 +432,7 @@ with col_right:
 with col_left:
     st.dataframe(
         df_raw.head(8),
-        use_container_width=True,
+        width='stretch',
         height=240,
     )
 
@@ -449,15 +449,15 @@ if run_btn:
         df = df.drop(columns=[c for c in id_cols if c in df.columns and c != target_col], errors='ignore')
 
         for col in df.columns:
-            if df[col].dtype == 'object' or df[col].dtype.name == 'category':
-                df[col] = df[col].fillna(df[col].mode()[0])
-            else:
+            if pd.api.types.is_numeric_dtype(df[col]):
                 df[col] = df[col].fillna(df[col].median())
+            else:
+                df[col] = df[col].fillna(df[col].mode()[0])
 
         X = df.drop(columns=[target_col])
         y = df[target_col]
 
-        if y.dtype == 'object' or y.dtype.name == 'category':
+        if not pd.api.types.is_numeric_dtype(y):
             le = LabelEncoder()
             y  = le.fit_transform(y)
 
@@ -620,7 +620,7 @@ if run_btn:
         margin=dict(l=0, r=0, t=40, b=0),
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
     # ── Section: Scoreboard ───────────────────────────────────────────────────
     st.markdown('<div class="section-header"><div class="section-dot"></div><p class="section-title">Final scoreboard</p></div>', unsafe_allow_html=True)
