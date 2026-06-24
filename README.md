@@ -1,6 +1,7 @@
 # 🚀 BoostArena: Dynamic Tree-by-Tree Visualizer
 <img width="2760" height="1400" alt="boostarena_project_banner" src="https://github.com/user-attachments/assets/671ec432-785a-4f1d-98ad-5678bf68f2a2" />
 
+**🌐 Live Web App:** [Click here to launch](https://boosting-convergence-visualizer-qgchrlevqzbx576e2dmp3m.streamlit.app/)
 ### 🥊 The Ultimate Ensemble Learning Showdown.
 
 BoostArena is an interactive Machine Learning dashboard built with **Streamlit** and **Plotly** that visualizes the tree-by-tree optimization paths of **AdaBoost**, **Gradient Boosting**, and **XGBoost** in real-time. 
