@@ -9,7 +9,7 @@ from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
 from xgboost import XGBClassifier
 import time
 
-# ── Page config ────────────────────────────────────────────────────────────────
+
 st.set_page_config(
     page_title="BoostArena",
     page_icon="⚡",
