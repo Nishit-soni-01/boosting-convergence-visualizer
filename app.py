@@ -19,7 +19,7 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-/* ── Base & fonts ── */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 html, body, [class*="css"] {
